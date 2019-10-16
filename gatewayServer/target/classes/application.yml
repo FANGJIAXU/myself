@@ -1,0 +1,35 @@
+eureka-host: 127.0.0.1
+eurek-port: 8761
+
+spring:
+  application:
+    name: gateway-server
+  security:
+    user:
+      name: user
+      password: 123
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        enabled: true
+        service-id: config_Server
+      username: ${spring.security.user.name}
+      password: ${spring.security.user.password}
+    gateway:
+      discovery:      #是否与服务发现组件进行结合，通过 serviceId(必须设置成大写) 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+        locator:      #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问。
+          enabled: true
+      routes:
+      - id: maxnerva-log                     #网关路由到maxnerva-log
+        uri: lb://maxnerva-log
+        predicates:
+        - Path=/log/**
+        filters:
+        - StripPrefix=1
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+        defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka-host:127.0.0.1}:${eureka-port:8761}/eureka/
