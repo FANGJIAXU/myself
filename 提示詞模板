@@ -1,0 +1,18 @@
+API / Postman 單行字串轉義模板 (JSON Escaper)
+
+提示詞名稱
+API / Postman 單行字串轉義模板 (JSON Escaper)
+
+提示詞內容
+請幫我把【以下內容】處理成【Postman/API 可用的轉義單行文本（String）】，作為 API 的 prompt 參數傳輸，保留換行符為 \n，不要解析或生成新內容：
+
+[貼上您的內容]
+
+快速調用關鍵字
+下次使用時，只需在指令中包含以下任意 1~2 個關鍵字，AI 即可自動識別並執行：
+
+指定用途：Postman 傳參、API Body 參數、JSON Value
+
+指定格式：單行文本、Escape 轉義字串、包含 \n 換行符
+
+明確指令：原樣輸出、不要解析/不要生成回答、直接返回 String
